@@ -5,7 +5,13 @@
  */
 package DataAccessLayer;
 
-import BusinessLayer.*;
+import BusinessLogicLayer.Client;
+import BusinessLogicLayer.Customer_Bookings;
+import BusinessLogicLayer.SellableItem;
+import BusinessLogicLayer.EventSellableItems;
+import BusinessLogicLayer.Payment;
+import BusinessLogicLayer.Event;
+import BusinessLogicLayer.Owner;
 import java.util.List;
 /**
  *
