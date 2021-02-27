@@ -9,6 +9,19 @@ package BusinessLayer;
  *
  * @author Christopher
  */
-public class Payment {
+public class Payment 
+{
+    int invoice_num;
+    double pay_date;
+    double amount;
+    int event_id;
     
+    public Payment(int invoice_num, double pay_date, double amount, int event_id)
+    {
+        this.invoice_num = invoice_num;
+        this.pay_date = pay_date;
+        this.amount = amount;
+        this.event_id = event_id;
+        
+    }
 }

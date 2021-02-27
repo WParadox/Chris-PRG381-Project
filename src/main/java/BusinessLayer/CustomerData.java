@@ -9,6 +9,7 @@ package BusinessLayer;
  *
  * @author Kyle Opperman
  */
-public class CustomerData {
+public class CustomerData 
+{
     
 }
