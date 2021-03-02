@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package BusinessLogicLayer;
-
+import java.util.*;
 /**
  *
  * @author Christopher
@@ -17,7 +17,7 @@ public class Event
     String type;
     String theme;
     String comments;
-    double date;
+    Date date;
     String address;
     String region;
     String city;
@@ -27,7 +27,7 @@ public class Event
     double lcost;
     boolean cancelled_Status;
     
-    public Event(int event_ID, int client_ID, double budget, String type, String theme, String comments, double date, String address, String region, String city, int guest_Num, int booking_Num, double tcost, double lcost, boolean cancelled_Status)
+    public Event(int event_ID, int client_ID, double budget, String type, String theme, String comments, Date date, String address, String region, String city, int guest_Num, int booking_Num, double tcost, double lcost, boolean cancelled_Status)
     {
         this.event_ID = event_ID;
         this.client_ID = client_ID;
