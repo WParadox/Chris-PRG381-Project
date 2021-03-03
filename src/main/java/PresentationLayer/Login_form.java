@@ -5,12 +5,20 @@
  */
 package PresentationLayer;
 
+import java.sql.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ruhan
  */
 public class Login_form extends javax.swing.JFrame {
-
+    
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
+    PreparedStatement cst = null;
+    ResultSet rt = null;
     /**
      * Creates new form Login_form
      */
@@ -52,9 +60,19 @@ public class Login_form extends javax.swing.JFrame {
 
         btn_Login.setText("Login");
         btn_Login.setActionCommand("btn_Login");
+        btn_Login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_LoginActionPerformed(evt);
+            }
+        });
 
         btn_Register.setText("Register");
         btn_Register.setActionCommand("btn_Register");
+        btn_Register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegisterActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setViewportView(txt_Password);
         txt_Password.getAccessibleContext().setAccessibleName("");
@@ -97,7 +115,7 @@ public class Login_form extends javax.swing.JFrame {
                         .addComponent(jScrollPane1)
                         .addGap(12, 12, 12)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btn_Login)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_Register)
@@ -106,6 +124,49 @@ public class Login_form extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LoginActionPerformed
+        // TODO add your handling code here:
+        String username = txt_Username.getText();
+        String password = txt_Password.getText();
+        
+        try {
+            String driver = "net.ucanaccess.jdbc.UcanaccessDriver";
+            Class.forName(driver);
+            Connection conn = DriverManager.getConnection("jdbc:ucanaccess://DeliciousCatering.accdb");
+            String sql = "Select * from Client where UserName=? and Password=?";
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, username);
+            pst.setString(2, password);
+            rs = pst.executeQuery();
+            rs.next();
+            if (username.contains(rs.getString("UserName")) && password.contains(rs.getString("Password"))) 
+            {
+                txt_Username.setText(null);
+                txt_Password.setText(null);
+                
+                Client_personal_Booking_view ff = new Client_personal_Booking_view();
+                ff.setVisible(true);
+                dispose();
+            }
+            
+        } catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(null,"Invalid Username OR Password","Login ERROR!!",JOptionPane.ERROR_MESSAGE);
+        }
+        txt_Username.setText(null);
+        txt_Password.setText(null);
+        
+    }//GEN-LAST:event_btn_LoginActionPerformed
+
+    private void btn_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegisterActionPerformed
+        // TODO add your handling code here:
+        
+        Register_Form rf = new Register_Form();
+                rf.setVisible(true);
+                dispose();
+        
+    }//GEN-LAST:event_btn_RegisterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,4 +214,10 @@ public class Login_form extends javax.swing.JFrame {
     private javax.swing.JTextPane txt_Password;
     private javax.swing.JTextPane txt_Username;
     // End of variables declaration//GEN-END:variables
+
+    private void systemExit() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 }
