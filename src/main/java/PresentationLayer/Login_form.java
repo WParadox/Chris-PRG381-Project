@@ -145,8 +145,9 @@ public class Login_form extends javax.swing.JFrame {
                 txt_Username.setText(null);
                 txt_Password.setText(null);
                 
-                Client_personal_Booking_view ff = new Client_personal_Booking_view();
-                ff.setVisible(true);
+                JOptionPane.showMessageDialog(null,"Login successfull welcome "+ username +"");
+                Choice_JFrame cj = new Choice_JFrame();
+                cj.setVisible(true);
                 dispose();
             }
             
