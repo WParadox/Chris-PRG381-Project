@@ -22,9 +22,8 @@ public class Test {
             System.out.println(cl.getFirstName());
         }
         
-        //Example of inserting new client in database
-        Client clientToInsert = new Client("Nick","Morris",LocalDate.of(1990, Month.FEBRUARY, 24),"0735932363","nick.morris@gmail.com","9002244626963");
-        //clientObj.InsertNewClient(clientToInsert); //uncomment this code to perform row insertion
+        Client clientToInsert =  new Client("Nick", "Morris", LocalDate.of(1990, Month.FEBRUARY, 24), "0735932363", "nick.morris@gmail.com",
+                "9002244626963");
         
         //Example of updating a client in the database
         
