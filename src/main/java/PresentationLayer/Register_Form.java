@@ -17,6 +17,31 @@ public class Register_Form extends javax.swing.JFrame {
     public Register_Form() {
         initComponents();
     }
+    
+    public void clear()
+    {
+        
+        txt_FirstName.setText("");
+        txt_LastName.setText("");
+        txt_UserName.setText("");
+        txt_Email.setText("");
+        txt_HomeAddress.setText("");
+        txt_CellNum.setText("");
+        txt_BirthDate.setText("");
+        txt_NationalID.setText("");
+        txt_Password.setText("");
+        txt_ConfirmPass.setText("");
+        
+    }
+    
+    public void registertodatabase()
+    {
+        try 
+        {
+            String url = "";
+        } catch (Exception e) {
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,7 +52,7 @@ public class Register_Form extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_Register = new javax.swing.JButton();
+        btn_BackToLogin = new javax.swing.JButton();
         txt_UserName = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -45,11 +70,22 @@ public class Register_Form extends javax.swing.JFrame {
         txt_FirstName = new javax.swing.JTextField();
         txt_LastName = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txt_BirthDate = new javax.swing.JTextField();
+        txt_NationalID = new javax.swing.JTextField();
+        btn_Register1 = new javax.swing.JButton();
+        btn_Reset = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_Register.setText("Register");
-        btn_Register.setActionCommand("btn_Register");
+        btn_BackToLogin.setText("Back to Login");
+        btn_BackToLogin.setActionCommand("Back to Login");
+        btn_BackToLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_BackToLoginActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("FirstName :");
 
@@ -102,24 +138,60 @@ public class Register_Form extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel9.setText("Register with us");
 
+        jLabel10.setText("BirthDate :");
+
+        jLabel11.setText("NationalID :");
+
+        txt_BirthDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_BirthDateActionPerformed(evt);
+            }
+        });
+
+        txt_NationalID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NationalIDActionPerformed(evt);
+            }
+        });
+
+        btn_Register1.setText("Register");
+        btn_Register1.setActionCommand("btn_Register");
+        btn_Register1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Register1ActionPerformed(evt);
+            }
+        });
+
+        btn_Reset.setText("Reset");
+        btn_Reset.setActionCommand("Reset");
+        btn_Reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ResetActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel8)
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel1)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel10)
+                                .addComponent(jLabel11))
+                            .addComponent(btn_Reset, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_FirstName)
                             .addComponent(txt_LastName)
@@ -128,21 +200,22 @@ public class Register_Form extends javax.swing.JFrame {
                             .addComponent(txt_HomeAddress)
                             .addComponent(txt_CellNum)
                             .addComponent(txt_Password)
-                            .addComponent(txt_ConfirmPass, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(btn_Register))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel9)))
-                .addContainerGap(126, Short.MAX_VALUE))
+                            .addComponent(txt_ConfirmPass)
+                            .addComponent(txt_BirthDate)
+                            .addComponent(txt_NationalID)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btn_Register1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_BackToLogin))))
+                    .addComponent(jLabel9))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap()
                 .addComponent(jLabel9)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txt_FirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -162,11 +235,19 @@ public class Register_Form extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txt_HomeAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txt_CellNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(txt_BirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txt_NationalID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txt_Password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -174,9 +255,12 @@ public class Register_Form extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(txt_ConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btn_Register)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_BackToLogin)
+                    .addComponent(btn_Register1)
+                    .addComponent(btn_Reset))
+                .addContainerGap())
         );
 
         pack();
@@ -201,6 +285,38 @@ public class Register_Form extends javax.swing.JFrame {
     private void txt_PasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_PasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_PasswordActionPerformed
+
+    private void txt_BirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_BirthDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_BirthDateActionPerformed
+
+    private void txt_NationalIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NationalIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_NationalIDActionPerformed
+
+    private void btn_BackToLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BackToLoginActionPerformed
+        // TODO add your handling code here:
+        
+        Login_form lf = new Login_form();
+                lf.setVisible(true);
+                dispose();
+    }//GEN-LAST:event_btn_BackToLoginActionPerformed
+
+    private void btn_ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ResetActionPerformed
+        // TODO add your handling code here:
+        clear();
+    }//GEN-LAST:event_btn_ResetActionPerformed
+
+    
+    
+    private void btn_Register1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Register1ActionPerformed
+        // TODO add your handling code here:
+        
+        String firstname = txt_FirstName.getText();
+        String lastname = txt_LastName.getText();
+        String 
+                
+    }//GEN-LAST:event_btn_Register1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,8 +354,12 @@ public class Register_Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Register;
+    private javax.swing.JButton btn_BackToLogin;
+    private javax.swing.JButton btn_Register1;
+    private javax.swing.JButton btn_Reset;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -248,12 +368,14 @@ public class Register_Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField txt_BirthDate;
     private javax.swing.JTextField txt_CellNum;
     private javax.swing.JTextField txt_ConfirmPass;
     private javax.swing.JTextField txt_Email;
     private javax.swing.JTextField txt_FirstName;
     private javax.swing.JTextField txt_HomeAddress;
     private javax.swing.JTextField txt_LastName;
+    private javax.swing.JTextField txt_NationalID;
     private javax.swing.JTextField txt_Password;
     private javax.swing.JTextField txt_UserName;
     // End of variables declaration//GEN-END:variables
