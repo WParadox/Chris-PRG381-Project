@@ -179,6 +179,12 @@ public class Booking
     public Booking() {
     }
     
+    public String  ValidDate()
+    {
+        
+        return null;
+    }
+    
     
     
 }
