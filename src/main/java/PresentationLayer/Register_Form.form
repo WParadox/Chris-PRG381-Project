@@ -132,7 +132,6 @@
     <Component class="javax.swing.JButton" name="btn_BackToLogin">
       <Properties>
         <Property name="text" type="java.lang.String" value="Back to Login"/>
-        <Property name="actionCommand" type="java.lang.String" value="Back to Login"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_BackToLoginActionPerformed"/>
@@ -242,7 +241,6 @@
     <Component class="javax.swing.JButton" name="btn_Reset">
       <Properties>
         <Property name="text" type="java.lang.String" value="Reset"/>
-        <Property name="actionCommand" type="java.lang.String" value="Reset"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ResetActionPerformed"/>

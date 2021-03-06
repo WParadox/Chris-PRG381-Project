@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -90,7 +93,6 @@ public class Register_Form extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btn_BackToLogin.setText("Back to Login");
-        btn_BackToLogin.setActionCommand("Back to Login");
         btn_BackToLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_BackToLoginActionPerformed(evt);
@@ -165,7 +167,6 @@ public class Register_Form extends javax.swing.JFrame {
         });
 
         btn_Reset.setText("Reset");
-        btn_Reset.setActionCommand("Reset");
         btn_Reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ResetActionPerformed(evt);
@@ -279,10 +280,6 @@ public class Register_Form extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_PasswordActionPerformed
 
-    private void txt_BirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_BirthDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_BirthDateActionPerformed
-
     private void txt_NationalIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NationalIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_NationalIDActionPerformed
@@ -322,10 +319,18 @@ public class Register_Form extends javax.swing.JFrame {
         }
         else
         {
-            clientRegister(firstname, lastname, username, email, cell, birthdate, id, password);
+            try {
+                clientRegister(firstname, lastname, username, email, cell, birthdate, id, password);
+            } catch (SQLException ex) {
+                Logger.getLogger(Register_Form.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
                 
     }//GEN-LAST:event_btn_Register1ActionPerformed
+
+    private void txt_BirthDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_BirthDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_BirthDateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -387,13 +392,13 @@ public class Register_Form extends javax.swing.JFrame {
     private javax.swing.JTextField txt_UserName;
     // End of variables declaration//GEN-END:variables
 
-    private void clientRegister(String firstname, String lastname, String username, String email, String cell, String birthdate, String id, String password) 
+    private void clientRegister(String firstname, String lastname, String username, String email, String cell, String birthdate, String id, String password) throws SQLException 
     {
         try {
             String driver = "net.ucanaccess.jdbc.UcanaccessDriver";
             Class.forName(driver);
             Connection conn = DriverManager.getConnection("jdbc:ucanaccess://DeliciousCatering.accdb");
-            String sql = "Insert Into Client (UserName, FirstName, LastName, BirthDate,Password, CellNum, Email, NationalID) VALUES(?,?,?,?,?,?,?,?,?)";
+            String sql = "Insert Into User (Username,Password,FirstName,LastName,BirthDate,CellNum,Email,NationalID)values(?,?,?,?,?,?,?,?)";
             pst = conn.prepareStatement(sql);
             pst.setString(1, username);
             pst.setString(2, firstname);
@@ -404,14 +409,14 @@ public class Register_Form extends javax.swing.JFrame {
             pst.setString(7, email);
             pst.setString(8, id);
             
-            int rs = pst.executeUpdate();
+            pst.executeUpdate();
             JOptionPane.showMessageDialog(null,"Client info added to system","Success", JOptionPane.INFORMATION_MESSAGE);
             
-        } catch (Exception e) 
+        } catch (ClassNotFoundException ex) 
         {
-            JOptionPane.showMessageDialog(null,"Invalid Username OR Password","Login ERROR!!",JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(Register_Form.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this,ex);
         }
-        txt_UserName.setText(null);
-        txt_Password.setText(null);
+       
     }
 }
